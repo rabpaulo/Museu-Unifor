@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Museu em Sinais</string>
+    <string name="splash_name">Museu em Sinais</string>
+    <string name="continuar">Continuar!</string>
+    <string name="descricao">“Por acreditarmos que obras de arte podem estar em brasa quando reavivadas pelos olhares dos públicos, concebemos a fricção entre elas como ação que desprende centelhas pelos ares. É com essa percepção que Paulo Miyada e Tiago Gualberto montaram a exposição “Centelhas em Movimento”, com obras da Coleção Igor Queiroz Barroso. Após bem-sucedida temporada no Instituto Tomie Ohtake,em São Paulo, a mostra chega à Fortaleza, terra natal do colecionador. A abertura da exposição acontecerá no dia 12 de março, às 19h, no Espaço Cultural Unifor. "Para Paulo Miyada, além de propor diálogos e enigmas, a narrativa não-linear da mostra evidencia que é o movimento que possibilita novas perspectivas e compreensões. O curador explica que o que está em jogo na exposição e em seu título é justamente a retomada do entendimento mais prosaico e intuitivo do movimento: deslocamento, em quaisquer direções e sentidos. "</string>
+    <string name="botao_visitante">Conhecer Exposição</string>
+    <string name="botao_adm">Administrador</string>
+    <string name="expo_nome">Centelhas em Movimento</string>
+    <string name="descricao_expo_atual">Por acreditarmos que obras de arte podem estar em brasa quando reavivadas pelos olhares dos públicos, concebemos a fricção entre elas como ação que desprende centelhas pelos ares.</string>
+</resources>
