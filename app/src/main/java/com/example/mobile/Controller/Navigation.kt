@@ -1,13 +1,11 @@
-package com.example.mobile.navigation
+package com.example.mobile.Controller
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.mobile.ViewModels.GeminiViewModel
-import com.example.mobile.screens.*
-import com.example.mobile.screens.utils.ListaDeAutores
+import com.example.mobile.Models.GeminiViewModel
+import com.example.mobile.View.*
 
 @Composable
 fun Navigation(){

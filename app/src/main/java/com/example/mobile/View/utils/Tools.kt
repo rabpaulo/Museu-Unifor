@@ -1,4 +1,4 @@
-package com.example.mobile.screens.utils
+package com.example.mobile.View.utils
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -11,33 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.example.mobile.R
 import java.io.ByteArrayOutputStream
-import android.app.Activity
-import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.net.toUri
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.contentDescription
 
 // Function to resize the Bitmap
 fun resizeBitmap(source: Bitmap, maxWidth: Int, maxHeight: Int): Bitmap {

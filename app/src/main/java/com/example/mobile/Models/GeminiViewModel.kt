@@ -1,4 +1,4 @@
-package com.example.mobile.ViewModels
+package com.example.mobile.Models
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.mutableStateOf
@@ -6,8 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.google.ai.client.generativeai.GenerativeModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,4 +1,4 @@
-package com.example.mobile.screens
+package com.example.mobile.View
 
 import android.graphics.Bitmap
 import android.speech.tts.TextToSpeech
@@ -24,7 +24,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
@@ -32,7 +31,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -53,13 +51,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.R
-import com.example.mobile.ViewModels.GeminiViewModel
-import com.example.mobile.screens.utils.BackButton
-import com.example.mobile.screens.utils.ChatScreen
-import com.example.mobile.screens.utils.VLibras
-import com.example.mobile.screens.utils.base64ToBitmap
-import com.example.mobile.screens.utils.dynamicSpacerHeight
-import com.example.mobile.screens.utils.poppinsFamily
+import com.example.mobile.Models.GeminiViewModel
+import com.example.mobile.View.utils.ChatScreen
+import com.example.mobile.View.utils.VLibras
+import com.example.mobile.View.utils.base64ToBitmap
+import com.example.mobile.View.utils.dynamicSpacerHeight
+import com.example.mobile.View.utils.poppinsFamily
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 

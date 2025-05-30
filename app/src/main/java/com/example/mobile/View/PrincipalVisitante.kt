@@ -1,4 +1,4 @@
-package com.example.mobile.screens
+package com.example.mobile.View
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -24,12 +24,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.R
-import com.example.mobile.navigation.Screen
-import com.example.mobile.screens.utils.BackButton
-import com.example.mobile.screens.utils.poppinsFamily
+import com.example.mobile.Controller.Screen
+import com.example.mobile.View.utils.BackButton
+import com.example.mobile.View.utils.poppinsFamily
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -37,19 +36,13 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.mobile.screens.utils.ImageCarousel
-import com.example.mobile.screens.utils.dynamicSpacerHeight
+import com.example.mobile.View.utils.dynamicSpacerHeight
 
 
 @Preview(showBackground = true)
