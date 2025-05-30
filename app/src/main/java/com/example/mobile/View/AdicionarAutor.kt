@@ -1,6 +1,5 @@
-package com.example.mobile.screens
+package com.example.mobile.View
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -24,24 +22,27 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.mobile.R
-import com.example.mobile.ViewModels.AutorViewModel
-import com.example.mobile.screens.utils.BackButton
-import com.example.mobile.screens.utils.ImagePicker
-import com.example.mobile.screens.utils.datePicker
+import com.example.mobile.Factory.ViewModelFactory
+import com.example.mobile.Models.AutorViewModel
+import com.example.mobile.View.utils.BackButton
+import com.example.mobile.View.utils.ImagePicker
+import com.example.mobile.View.utils.datePicker
 
 @Composable
 fun AdicionarAutor(navController: NavController){
-    var viewModel: AutorViewModel = viewModel()
+    var viewModel = ViewModelFactory().CreateViewModel("Autor") as AutorViewModel
     val context = LocalContext.current
 
-    // Variaves previnir campos vazios
+    // Variáveis de estado locais para campos editáveis
+    var nome by remember { mutableStateOf("") }
+    var descricao by remember { mutableStateOf("") }
+
+    // Variáveis para prevenir campos vazios
     var nomeError by remember { mutableStateOf(false) }
     var dateError by remember { mutableStateOf(false) }
     var descricaoError by remember { mutableStateOf(false) }
@@ -79,8 +80,8 @@ fun AdicionarAutor(navController: NavController){
 
         // Definir nome
         TextField(
-            value = viewModel.nome,
-            onValueChange = { viewModel.nome = it },
+            value = nome,
+            onValueChange = { nome = it },
             label = { Text("Nome") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -91,8 +92,8 @@ fun AdicionarAutor(navController: NavController){
 
         //Definir descricao
         TextField(
-            value = viewModel.descricao,
-            onValueChange = { viewModel.descricao = it },
+            value = descricao,
+            onValueChange = { descricao = it },
             label = { Text("Biografia") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -109,12 +110,15 @@ fun AdicionarAutor(navController: NavController){
         Button(
             onClick = {
                 // Checagem se os campos estao vazios
-                nomeError = viewModel.nome.isEmpty()
+                nomeError = nome.isEmpty()
                 dateError = viewModel.date.isEmpty()
-                descricaoError = viewModel.descricao.isEmpty()
+                descricaoError = descricao.isEmpty()
                 imageError = viewModel.image.isEmpty()
 
                 if (!nomeError && !dateError && !descricaoError && !imageError) {
+                    // Atualiza o viewModel com os valores dos campos
+                    viewModel.nome = nome
+                    viewModel.descricao = descricao
                     viewModel.cadastrarAutor(context)
                     navController.popBackStack()
                 }

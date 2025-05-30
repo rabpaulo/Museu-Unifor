@@ -1,10 +1,9 @@
-package com.example.mobile.screens
+package com.example.mobile.View
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import com.google.firebase.firestore.FirebaseFirestore
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,7 +18,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,15 +31,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.example.mobile.navigation.Screen
-import com.example.mobile.screens.utils.BackButton
-import com.example.mobile.screens.utils.dynamicSpacerHeight
-import com.example.mobile.screens.utils.poppinsFamily
+import com.example.mobile.Controller.Screen
+import com.example.mobile.View.utils.dynamicSpacerHeight
+import com.example.mobile.View.utils.poppinsFamily
+import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -125,23 +121,43 @@ fun checkCredentials(
     navController: NavController,
     onError: (String) -> Unit
 ) {
-    val db = FirebaseFirestore.getInstance()
-
-    db.collection("credenciais")
-        .whereEqualTo("login", login)
-        .whereEqualTo("senha", senha)
-        .get()
-        .addOnSuccessListener {
-            documents ->
-            if (!documents.isEmpty) {
+    val auth = FirebaseAuth.getInstance()
+    auth.signInWithEmailAndPassword(login, senha)
+        .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
                 navController.navigate(Screen.AutoresADM.route)
             } else {
-                onError("Login ou senha inválidos")
+                onError("Erro ao acessar o sistema. Tente novamente.")
             }
         }
         .addOnFailureListener {
-            exception ->
-            onError("Erro ao acessar o sistema. Tente novamente.")
+            onError("Login ou senha inválidos")
         }
 }
 
+//fun checkCredentials(
+//    login: String,
+//    senha: String,
+//    navController: NavController,
+//    onError: (String) -> Unit
+//) {
+//    val db = FirebaseFirestore.getInstance()
+//    FirebaseAuthCredentialsProvider.
+//
+//    db.collection("credenciais")
+//        .whereEqualTo("login", login)
+//        .whereEqualTo("senha", senha)
+//        .get()
+//        .addOnSuccessListener {
+//            documents ->
+//            if (!documents.isEmpty) {
+//                navController.navigate(Screen.AutoresADM.route)
+//            } else {
+//                onError("Login ou senha inválidos")
+//            }
+//        }
+//        .addOnFailureListener {
+//            exception ->
+//            onError("Erro ao acessar o sistema. Tente novamente.")
+//        }
+//}

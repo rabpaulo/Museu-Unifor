@@ -1,4 +1,4 @@
-package com.example.mobile.ViewModels
+package com.example.mobile.Models
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.mutableStateOf
@@ -6,8 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.google.ai.client.generativeai.GenerativeModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,7 +27,7 @@ class GeminiViewModel:ViewModel() {
     private suspend fun GeminiIA() {
         val generativeModel = GenerativeModel(
             modelName = "gemini-1.5-flash",
-            apiKey = "" // Insira sua chave API aqui
+            apiKey = "AIzaSyA91dqFrrPGem4_UaQ5hMv66YaLIEyxH3w" // Api Key
             )
             val textoRetorno = generativeModel.generateContent("A pergunta a seguir, responda em 300 caracteres" + prompt).text.toString()
             _resposta.emit(textoRetorno)

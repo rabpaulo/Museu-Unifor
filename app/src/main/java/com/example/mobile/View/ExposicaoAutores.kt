@@ -1,23 +1,17 @@
-package com.example.mobile.screens
+package com.example.mobile.View
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -34,25 +28,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.mobile.navigation.Screen
-import com.example.mobile.screens.utils.BackButton
-import com.example.mobile.screens.utils.ListaDeObras
-import com.example.mobile.screens.utils.poppinsFamily
+import com.example.mobile.Controller.Screen
+import com.example.mobile.View.utils.ListaDeAutores
+import com.example.mobile.View.utils.poppinsFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ObrasADM(navController: NavController){
-
-    Column(
-        Modifier
+fun ExposicaoAutores(navController: NavController){
+    Column(Modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.TopCenter)
             .padding(10.dp)
     ) {
+
+        // Center Aligned TopAppBar with the title and back button
         CenterAlignedTopAppBar(
             title = {
                 Text(
-                    "Gerenciamento",
+                    "Conheça os Autores",
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.Bold,
                     fontSize = 15.sp
@@ -71,13 +64,16 @@ fun ObrasADM(navController: NavController){
                 containerColor = Color.Transparent // Set transparent background
             )
         )
-
-        Row(Modifier.wrapContentSize(Alignment.TopCenter)){
-            TextButton(onClick = {navController.navigate(Screen.AutoresADM.route)},
-                Modifier.weight(1f)
-            ){
+        Row(
+            Modifier
+                .padding(top = 10.dp)
+                .wrapContentSize(Alignment.TopCenter)){
+            TextButton(onClick = {},
+                modifier = Modifier.weight(1f)
+            ) {
                 Text(
                     "Autores",
+                    style = TextStyle(fontWeight = FontWeight.Bold, color = Color.Gray),
                     fontSize = 14.sp,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth().padding(6.dp)
@@ -86,37 +82,23 @@ fun ObrasADM(navController: NavController){
 
             Spacer(Modifier.width(5.dp))
 
-            TextButton(onClick = {},
-                Modifier.weight(1f)
-            ) {
-                Text(
-                    "Obras",
-                    style = TextStyle(fontWeight = FontWeight.Bold, color = Color.Gray),
+            TextButton(onClick = {navController.navigate(Screen.ExposicaoObras.route)},
+                    modifier = Modifier.weight(1f)
+                ) {
+                Text("Obras",
                     fontSize = 14.sp,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth().padding(6.dp)
+
                 )
             }
 
-            Spacer(Modifier.height(60.dp))
+            //Spacer(Modifier.height(30.dp))
+
         }
 
-        ListaDeObras(navController, "edit")
-
-        Spacer(Modifier.width(5.dp))
-    }
-    Box(
-        Modifier
-            .fillMaxSize()
-            .wrapContentSize(Alignment.BottomEnd)
-            .padding(vertical = 80.dp, horizontal = 30.dp)
-    ){
-
-        ExtendedFloatingActionButton(
-            onClick = { navController.navigate(Screen.AdicionarObra.route)},
-            icon = { Icon(Icons.Filled.Add, "Extended floating action button.") },
-            text = { Text(text = "Adicionar Obra") },
-        )
-
+        Column {
+            ListaDeAutores(navController, "view")
+        }
     }
 }

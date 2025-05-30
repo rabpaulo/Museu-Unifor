@@ -1,4 +1,4 @@
-package com.example.mobile.screens
+package com.example.mobile.View
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -23,6 +23,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -30,25 +31,26 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.mobile.navigation.Screen
-import com.example.mobile.screens.utils.BackButton
-import com.example.mobile.screens.utils.ListaDeAutores
-import com.example.mobile.screens.utils.poppinsFamily
+import com.example.mobile.Controller.Screen
+import com.example.mobile.View.utils.ListaDeObras
+import com.example.mobile.View.utils.poppinsFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ExposicaoAutores(navController: NavController){
-    Column(Modifier
+fun ExposicaoObras(navController: NavController){
+
+
+    Column(
+        Modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.TopCenter)
-            .padding(10.dp)
-    ) {
+            .padding(10.dp)) {
 
         // Center Aligned TopAppBar with the title and back button
         CenterAlignedTopAppBar(
             title = {
                 Text(
-                    "Conheça os Autores",
+                    "Conheça as Obras",
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.Bold,
                     fontSize = 15.sp
@@ -71,11 +73,23 @@ fun ExposicaoAutores(navController: NavController){
             Modifier
                 .padding(top = 10.dp)
                 .wrapContentSize(Alignment.TopCenter)){
+            TextButton(onClick = {navController.navigate(Screen.ExposicaoAutores.route)},
+                modifier = Modifier.weight(1f)
+                    .clip(RoundedCornerShape(0.dp)) // Optional: Ensure sharp corners for a perfect square,
+
+                ){
+                Text("Autores",
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth().padding(6.dp)
+                    )
+            }
+
+            Spacer(Modifier.width(5.dp))
             TextButton(onClick = {},
                 modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    "Autores",
+                ) {
+                Text("Obras",
                     style = TextStyle(fontWeight = FontWeight.Bold, color = Color.Gray),
                     fontSize = 14.sp,
                     textAlign = TextAlign.Center,
@@ -84,24 +98,9 @@ fun ExposicaoAutores(navController: NavController){
             }
 
             Spacer(Modifier.width(5.dp))
-
-            TextButton(onClick = {navController.navigate(Screen.ExposicaoObras.route)},
-                    modifier = Modifier.weight(1f)
-                ) {
-                Text("Obras",
-                    fontSize = 14.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth().padding(6.dp)
-
-                )
-            }
-
-            //Spacer(Modifier.height(30.dp))
-
+            Spacer(Modifier.height(60.dp))
         }
 
-        Column {
-            ListaDeAutores(navController, "view")
-        }
+        ListaDeObras(navController, "view")
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mobile.screens.utils
+package com.example.mobile.View.utils
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -14,15 +14,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -30,7 +26,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,45 +35,28 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
-import coil.compose.rememberAsyncImagePainter
 import com.example.mobile.R
-import com.example.mobile.navigation.Screen
 import java.util.Calendar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.internal.composableLambdaInstance
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Send
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.unit.dp
-import com.example.mobile.ViewModels.GeminiViewModel
+import com.example.mobile.Models.GeminiViewModel
 
 @Composable
 fun VLibras(descricao: String, isSystemInDarkTheme: Boolean) {
@@ -258,24 +236,15 @@ fun CarouselItem(navController: NavController, autorId: String, obraId: String, 
     }
 }
 
-@Preview
-@Composable
-fun ChatScreen(){
-    ChatScreen(geminiViewModel = GeminiViewModel())
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatScreen(geminiViewModel: GeminiViewModel) {
     // Estado das mensagens (uma lista de pares: a mensagem e se é do usuário ou não)
     val messages = remember { mutableStateListOf<Pair<String, Boolean>>() }
-
     // Estado do texto da mensagem
     val textState = remember { mutableStateOf("") }
-
     // Resposta do Gemini do ViewModel
     val geminiResponse by geminiViewModel.resposta.collectAsState()
-
     // Função de envio da mensagem
     fun onMessageSent() {
         if (textState.value.isNotBlank()) {

@@ -1,5 +1,4 @@
-package com.example.mobile.navigation
-
+package com.example.mobile.Controller
 
 sealed class Screen (val route:String) {
     object PrimeiraTela: Screen("PrimeiraTela")

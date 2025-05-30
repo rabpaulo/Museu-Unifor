@@ -1,4 +1,4 @@
-package com.example.mobile.ViewModels
+package com.example.mobile.Models
 
 import android.content.Context
 import android.widget.Toast
