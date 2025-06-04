@@ -32,7 +32,9 @@ import com.example.mobile.R
 import com.example.mobile.Controller.Screen
 import com.example.mobile.View.utils.BackButton
 import com.google.firebase.firestore.FirebaseFirestore
+
 import com.example.mobile.Model.AutorModel
+
 import com.example.mobile.View.utils.base64ToBitmap
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -44,6 +46,7 @@ import com.example.mobile.View.utils.SelectableImage
 
 @Composable
 fun EditarAutor(navController: NavController, id: String) {
+
     val viewModel: AutorModel = viewModel()
     val db = FirebaseFirestore.getInstance()
     val context = LocalContext.current
@@ -73,6 +76,7 @@ fun EditarAutor(navController: NavController, id: String) {
             .addOnFailureListener { e ->
                 Log.e("FirestoreError", "Error fetching author data", e)
             }
+
     }
 
     Column(
@@ -121,8 +125,10 @@ fun EditarAutor(navController: NavController, id: String) {
         Spacer(Modifier.height(10.dp))
 
         TextField(
+
             value = nome,
             onValueChange = { nome = it },
+
             label = { Text(text = "Editar nome") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -130,8 +136,10 @@ fun EditarAutor(navController: NavController, id: String) {
         Spacer(Modifier.height(10.dp))
 
         TextField(
+
             value = date,
             onValueChange = { date = it },
+
             label = { Text(text = "Editar data") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -139,8 +147,10 @@ fun EditarAutor(navController: NavController, id: String) {
         Spacer(Modifier.height(10.dp))
 
         TextField(
+
             value = descricao,
             onValueChange = { descricao = it },
+
             label = { Text(text = "Editar descrição") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -163,10 +173,12 @@ fun EditarAutor(navController: NavController, id: String) {
 
             Button(
                 onClick = {
+
                     // Atualiza o viewModel com os valores dos campos antes de salvar
                     viewModel.nome = nome
                     viewModel.date = date
                     viewModel.descricao = descricao
+
                     viewModel.EditarAutor(context, id ?: "")
                     navController.navigate(Screen.AutoresADM.route)
                 },

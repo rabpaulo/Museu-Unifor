@@ -6,7 +6,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobile.Factory.ViewModelFactory
 import com.example.mobile.Model.GeminiView
-import com.example.mobile.View.*
+import com.example.mobile.Models.GeminiViewModel
+
 
 @Composable
 fun Navigation(){

@@ -39,6 +39,7 @@ import com.example.mobile.View.utils.dynamicSpacerHeight
 import com.example.mobile.View.utils.poppinsFamily
 import com.google.firebase.auth.FirebaseAuth
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Login(navController: NavController) {
@@ -161,3 +162,4 @@ fun checkCredentials(
 //            onError("Erro ao acessar o sistema. Tente novamente.")
 //        }
 //}
+

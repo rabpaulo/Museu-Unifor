@@ -32,11 +32,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
 import androidx.navigation.NavController
 import com.example.mobile.R
 import com.example.mobile.Model.ObraModel
 import com.example.mobile.Controller.Screen
 import com.example.mobile.Factory.ViewModelFactory
+
 import com.example.mobile.View.utils.BackButton
 import com.example.mobile.View.utils.SelectableImage
 import com.example.mobile.View.utils.base64ToBitmap
@@ -54,6 +56,7 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
     var data by remember { mutableStateOf("") }
     var descricao by remember { mutableStateOf("") }
     var image by remember { mutableStateOf("") }
+
 
     // Load obra data only once when the Composable is first launched
     LaunchedEffect(db) {
@@ -73,6 +76,7 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
                         // Decode Base64 string into Bitmap
                         if (image.isNotEmpty()) {
                             decodedBitmap = base64ToBitmap(image)
+
                         }
                     }
                     .addOnFailureListener { e ->
@@ -125,6 +129,7 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
             onImageSelected = { base64String ->
                 image = base64String
                 decodedBitmap = base64ToBitmap(base64String)
+
             }
         )
 
@@ -133,6 +138,7 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
         TextField(
             value = nome,
             onValueChange = { nome = it },
+
             label = { Text(text = "Editar nome") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -142,6 +148,7 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
         TextField(
             value = data,
             onValueChange = { data = it },
+
             label = { Text(text = "Editar data") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -151,6 +158,7 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
         TextField(
             value = descricao,
             onValueChange = { descricao = it },
+
             label = { Text(text = "Editar descrição") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -179,6 +187,7 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
                     viewModel.data = data
                     viewModel.descricao = descricao
                     viewModel.image = image
+
                     viewModel.EditarObra(context, idAutor + "", idObra + "")
                     navController.navigate(Screen.ObrasADM.route)
                 },

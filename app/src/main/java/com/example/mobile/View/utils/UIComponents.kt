@@ -57,6 +57,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.mobile.Model.GeminiView
 
+
 @Composable
 fun VLibras(descricao: String, isSystemInDarkTheme: Boolean) {
 
@@ -244,11 +245,13 @@ fun ChatScreen(geminiView: GeminiView) {
     val textState = remember { mutableStateOf("") }
     // Resposta do Gemini do ViewModel
     val geminiResponse by geminiView.resposta.collectAsState()
+
     // Função de envio da mensagem
     fun onMessageSent() {
         if (textState.value.isNotBlank()) {
             messages.add(textState.value to true) // Adiciona mensagem do usuário
             geminiView.callGemini(textState.value) // Chama o Gemini
+
             textState.value = "" // Limpa o campo de texto
         }
     }

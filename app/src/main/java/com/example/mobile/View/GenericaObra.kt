@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.R
 import com.example.mobile.Model.GeminiView
+
 import com.example.mobile.View.utils.ChatScreen
 import com.example.mobile.View.utils.VLibras
 import com.example.mobile.View.utils.base64ToBitmap
@@ -65,6 +66,7 @@ lateinit var textToSpeech: TextToSpeech
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ObrasGenerica(navController: NavController, idAutor : String?, idObra: String?, gemini: GeminiView) {
+
     val db = FirebaseFirestore.getInstance()
 
     val nomeAutor = remember { mutableStateOf("") }
@@ -74,6 +76,7 @@ fun ObrasGenerica(navController: NavController, idAutor : String?, idObra: Strin
     val imageObra = remember { mutableStateOf("") }
 
     var decodedBitmap by remember { mutableStateOf<Bitmap?>(null) } // For storing the decoded image
+
 
     val context = LocalContext.current
 

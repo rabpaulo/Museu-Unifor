@@ -81,8 +81,10 @@ fun AdicionarAutor(navController: NavController){
 
         // Definir nome
         TextField(
+
             value = nome,
             onValueChange = { nome = it },
+
             label = { Text("Nome") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -93,8 +95,10 @@ fun AdicionarAutor(navController: NavController){
 
         //Definir descricao
         TextField(
+
             value = descricao,
             onValueChange = { descricao = it },
+
             label = { Text("Biografia") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -111,6 +115,7 @@ fun AdicionarAutor(navController: NavController){
         Button(
             onClick = {
                 // Checagem se os campos estao vazios
+
                 nomeError = nome.isEmpty()
                 dateError = viewModel.date.isEmpty()
                 descricaoError = descricao.isEmpty()
@@ -122,6 +127,7 @@ fun AdicionarAutor(navController: NavController){
                     viewModel.descricao = descricao
                     viewModel.cadastrarAutor(context)
                     repository
+
                     navController.popBackStack()
                 }
             },

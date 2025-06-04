@@ -47,6 +47,7 @@ import com.example.mobile.View.utils.dynamicSpacerHeight
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PrincipalVisitante(navController: NavController) {
+
     Column(modifier = Modifier.fillMaxSize()) {
 
         // Center Aligned TopAppBar with the title and back button
@@ -121,7 +122,6 @@ fun PrincipalVisitante(navController: NavController) {
                     )
                 }
 
-//              ImageCarousel(navController, autorId = "", images = "", ids = obraIds)
 
                 // Button for "Conhecer autores e obras"
                 Button(
@@ -145,3 +145,4 @@ fun PrincipalVisitante(navController: NavController) {
             }
         }
     }
+

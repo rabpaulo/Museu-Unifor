@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.R
 import com.example.mobile.Model.GeminiView
+
 import com.example.mobile.View.utils.ChatScreen
 import com.example.mobile.View.utils.ImageCarousel
 import com.example.mobile.View.utils.VLibras
@@ -64,6 +65,7 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AutorGenerica(navController: NavController, id: String?, gemini: GeminiView) {
+
     val db = FirebaseFirestore.getInstance()
 
     val authorName = remember { mutableStateOf("") }

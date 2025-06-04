@@ -72,13 +72,14 @@ fun EscolhaVisitaLogin(navController: NavController) {
             }
 
             Spacer(modifier = Modifier.height(dynamicSpacerHeight(0.019f)))
-
+            
             OutlinedButton(
                 onClick = { navController.navigate(Screen.Login.route) },
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .height(56.dp),
                 shape = RoundedCornerShape(42.dp),
+
                 border = BorderStroke(1.dp, Color.Gray)
             ) {
                 Row(
