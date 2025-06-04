@@ -32,7 +32,7 @@ import com.example.mobile.R
 import com.example.mobile.Controller.Screen
 import com.example.mobile.View.utils.BackButton
 import com.google.firebase.firestore.FirebaseFirestore
-import com.example.mobile.Models.AutorViewModel
+import com.example.mobile.Model.AutorModel
 import com.example.mobile.View.utils.base64ToBitmap
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -44,7 +44,7 @@ import com.example.mobile.View.utils.SelectableImage
 
 @Composable
 fun EditarAutor(navController: NavController, id: String) {
-    val viewModel: AutorViewModel = viewModel()
+    val viewModel: AutorModel = viewModel()
     val db = FirebaseFirestore.getInstance()
     val context = LocalContext.current
     var decodedBitmap by remember { mutableStateOf<Bitmap?>(null) }

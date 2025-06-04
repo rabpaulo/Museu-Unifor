@@ -32,11 +32,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.NavController
 import com.example.mobile.R
-import com.example.mobile.Models.ObraViewModel
+import com.example.mobile.Model.ObraModel
 import com.example.mobile.Controller.Screen
 import com.example.mobile.Factory.ViewModelFactory
 import com.example.mobile.View.utils.BackButton
@@ -46,7 +44,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
 fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) {
-    val viewModel = remember { ViewModelFactory().CreateViewModel("Obra") as ObraViewModel }
+    val viewModel = remember { ViewModelFactory().CreateViewModel("Obra") as ObraModel }
     val db = FirebaseFirestore.getInstance()
     val context = LocalContext.current
     var decodedBitmap by remember { mutableStateOf<Bitmap?>(null) }

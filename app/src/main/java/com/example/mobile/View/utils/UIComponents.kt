@@ -49,14 +49,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.example.mobile.Models.GeminiViewModel
+import com.example.mobile.Model.GeminiView
 
 @Composable
 fun VLibras(descricao: String, isSystemInDarkTheme: Boolean) {
@@ -238,18 +237,18 @@ fun CarouselItem(navController: NavController, autorId: String, obraId: String, 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChatScreen(geminiViewModel: GeminiViewModel) {
+fun ChatScreen(geminiView: GeminiView) {
     // Estado das mensagens (uma lista de pares: a mensagem e se é do usuário ou não)
     val messages = remember { mutableStateListOf<Pair<String, Boolean>>() }
     // Estado do texto da mensagem
     val textState = remember { mutableStateOf("") }
     // Resposta do Gemini do ViewModel
-    val geminiResponse by geminiViewModel.resposta.collectAsState()
+    val geminiResponse by geminiView.resposta.collectAsState()
     // Função de envio da mensagem
     fun onMessageSent() {
         if (textState.value.isNotBlank()) {
             messages.add(textState.value to true) // Adiciona mensagem do usuário
-            geminiViewModel.callGemini(textState.value) // Chama o Gemini
+            geminiView.callGemini(textState.value) // Chama o Gemini
             textState.value = "" // Limpa o campo de texto
         }
     }

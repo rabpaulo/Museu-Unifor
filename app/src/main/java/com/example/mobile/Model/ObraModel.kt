@@ -1,4 +1,4 @@
-package com.example.mobile.Models
+package com.example.mobile.Model
 
 import android.content.Context
 import android.widget.Toast
@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ObraViewModel:ViewModel() {
+class ObraModel:ViewModel() {
     var autor by mutableStateOf("")
     var nome by mutableStateOf("")
     var data by mutableStateOf("")

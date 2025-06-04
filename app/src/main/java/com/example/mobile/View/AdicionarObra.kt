@@ -26,10 +26,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.mobile.Factory.RepositoryFactory
 import com.example.mobile.Factory.ViewModelFactory
-import com.example.mobile.Models.ObraViewModel
+import com.example.mobile.Model.ObraModel
+import com.example.mobile.Repository.ObraRepository
 import com.example.mobile.View.utils.BackButton
 import com.example.mobile.View.utils.ImagePicker
 import com.example.mobile.View.utils.datePicker
@@ -39,7 +40,8 @@ import com.example.mobile.View.utils.selecionarAutor
 
 @Composable
 fun AdicionarObra(navController: NavController){
-    var viewModel = ViewModelFactory().CreateViewModel("Obra") as ObraViewModel
+    var viewModel = ViewModelFactory().CreateViewModel("Obra") as ObraModel
+    var repository = RepositoryFactory().CreateRepository("Obra")
     val context = LocalContext.current
 
     var autorId by remember { mutableStateOf("") }
@@ -139,6 +141,7 @@ fun AdicionarObra(navController: NavController){
                     viewModel.nome = nome
                     viewModel.descricao = descricao
                     viewModel.adicionarObra(context, autorId)
+                    repository
                     navController.popBackStack()
                 }
             }

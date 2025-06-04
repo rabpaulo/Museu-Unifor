@@ -33,16 +33,3 @@ val poppinsFamily = FontFamily(
     Font(R.font.poppins_thin, FontWeight.Thin)
 
 )
-
-@Composable
-fun DifferentFonts(){
-    Column(modifier  = Modifier.background(color = Color.White)){
-        Text(text = "Poppins Black", fontFamily = poppinsFamily, fontWeight = FontWeight.Black)
-        Text(text = "Poppins Light", fontFamily = poppinsFamily, fontWeight = FontWeight.Light)
-        Text(text = "Poppins ExtraBold", fontFamily = poppinsFamily, fontWeight = FontWeight.ExtraBold)
-        Text(text = "Poppins SemiBold", fontFamily = poppinsFamily, fontWeight = FontWeight.SemiBold)
-        Text(text = "Poppins Medium", fontFamily = poppinsFamily, fontWeight = FontWeight.Medium)
-        Text(text = "Poppins Regular", fontFamily = poppinsFamily, fontWeight = FontWeight.Normal)
-        Text(text = "Poppins Regular", fontFamily = poppinsFamily, fontWeight = FontWeight.Bold)
-    }
-}

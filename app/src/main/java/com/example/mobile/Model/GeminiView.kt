@@ -1,4 +1,4 @@
-package com.example.mobile.Models
+package com.example.mobile.Model
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.mutableStateOf
@@ -11,9 +11,9 @@ import com.google.ai.client.generativeai.GenerativeModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class GeminiViewModel:ViewModel() {
+class GeminiView:ViewModel() {
     var prompt by mutableStateOf("")
-    private val _resposta = MutableStateFlow("")
+    internal val _resposta = MutableStateFlow("")
     val resposta: StateFlow<String> get() = _resposta
 
     fun callGemini(value: String) {

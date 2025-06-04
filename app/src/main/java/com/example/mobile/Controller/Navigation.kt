@@ -1,18 +1,17 @@
 package com.example.mobile.Controller
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobile.Factory.ViewModelFactory
-import com.example.mobile.Models.GeminiViewModel
+import com.example.mobile.Model.GeminiView
 import com.example.mobile.View.*
 
 @Composable
 fun Navigation(){
     val navController = rememberNavController();
-    val gemini = ViewModelFactory().CreateViewModel("Gemini") as GeminiViewModel
+    val gemini = ViewModelFactory().CreateViewModel("Gemini") as GeminiView
 
     NavHost(navController = navController, startDestination = Screen.PrimeiraTela.route){
         composable(route = Screen.PrimeiraTela.route){

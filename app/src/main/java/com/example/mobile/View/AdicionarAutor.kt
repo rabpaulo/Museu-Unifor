@@ -25,17 +25,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.mobile.Factory.RepositoryFactory
 import com.example.mobile.Factory.ViewModelFactory
-import com.example.mobile.Models.AutorViewModel
+import com.example.mobile.Model.AutorModel
 import com.example.mobile.View.utils.BackButton
 import com.example.mobile.View.utils.ImagePicker
 import com.example.mobile.View.utils.datePicker
 
 @Composable
 fun AdicionarAutor(navController: NavController){
-    var viewModel = ViewModelFactory().CreateViewModel("Autor") as AutorViewModel
+    var viewModel = ViewModelFactory().CreateViewModel("Autor") as AutorModel
+    var repository = RepositoryFactory().CreateRepository("Obra")
     val context = LocalContext.current
 
     // Variáveis de estado locais para campos editáveis
@@ -120,6 +121,7 @@ fun AdicionarAutor(navController: NavController){
                     viewModel.nome = nome
                     viewModel.descricao = descricao
                     viewModel.cadastrarAutor(context)
+                    repository
                     navController.popBackStack()
                 }
             },

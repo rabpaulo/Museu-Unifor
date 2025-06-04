@@ -1,4 +1,4 @@
-package com.example.mobile.Models
+package com.example.mobile.Model
 
 import android.content.Context
 import android.widget.Toast
@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class AutorViewModel:ViewModel() {
+class AutorModel:ViewModel() {
     var nome by mutableStateOf("")
     var descricao by mutableStateOf("")
     var date by mutableStateOf("")

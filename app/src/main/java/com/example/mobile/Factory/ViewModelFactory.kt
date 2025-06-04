@@ -1,15 +1,15 @@
 package com.example.mobile.Factory
 
-import com.example.mobile.Models.AutorViewModel
-import com.example.mobile.Models.GeminiViewModel
-import com.example.mobile.Models.ObraViewModel
+import com.example.mobile.Model.AutorModel
+import com.example.mobile.Model.GeminiView
+import com.example.mobile.Model.ObraModel
 
 class ViewModelFactory{
     fun CreateViewModel(type: String): Any {
         return when (type) {
-            "Gemini" -> GeminiViewModel()
-            "Obra" -> ObraViewModel()
-            "Autor" -> AutorViewModel()
+            "Gemini" -> GeminiView()
+            "Obra" -> ObraModel()
+            "Autor" -> AutorModel()
              else -> throw IllegalArgumentException("Unknown ViewModel type: $type")
         }
     }
