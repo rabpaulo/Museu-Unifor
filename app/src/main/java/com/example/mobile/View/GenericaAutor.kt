@@ -51,7 +51,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.R
-import com.example.mobile.Models.GeminiViewModel
+import com.example.mobile.Model.GeminiView
+
 import com.example.mobile.View.utils.ChatScreen
 import com.example.mobile.View.utils.ImageCarousel
 import com.example.mobile.View.utils.VLibras
@@ -61,10 +62,10 @@ import com.example.mobile.View.utils.poppinsFamily
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AutorGenerica(navController: NavController, id: String?, gemini: GeminiViewModel) {
+fun AutorGenerica(navController: NavController, id: String?, gemini: GeminiView) {
+
     val db = FirebaseFirestore.getInstance()
 
     val authorName = remember { mutableStateOf("") }
@@ -76,8 +77,6 @@ fun AutorGenerica(navController: NavController, id: String?, gemini: GeminiViewM
     val obrasIds = remember { mutableStateOf<List<String>>(emptyList()) }
 
     var decodedBitmap by remember { mutableStateOf<Bitmap?>(null) }
-
-    var textState = remember { mutableStateOf("") }
 
     val context = LocalContext.current
 

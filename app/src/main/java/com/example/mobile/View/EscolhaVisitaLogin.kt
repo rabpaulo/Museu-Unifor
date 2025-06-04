@@ -72,14 +72,14 @@ fun EscolhaVisitaLogin(navController: NavController) {
             }
 
             Spacer(modifier = Modifier.height(dynamicSpacerHeight(0.019f)))
-
-            // Circular Button with Icon and Text
+            
             OutlinedButton(
                 onClick = { navController.navigate(Screen.Login.route) },
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
-                    .height(56.dp), // Height for alignment
-                shape = RoundedCornerShape(42.dp), // Rounded for a pill-like appearance
+                    .height(56.dp),
+                shape = RoundedCornerShape(42.dp),
+
                 border = BorderStroke(1.dp, Color.Gray)
             ) {
                 Row(

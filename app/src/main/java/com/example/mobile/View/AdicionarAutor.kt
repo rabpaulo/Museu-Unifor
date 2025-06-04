@@ -25,19 +25,25 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.mobile.Models.AutorViewModel
+import com.example.mobile.Factory.RepositoryFactory
+import com.example.mobile.Factory.ViewModelFactory
+import com.example.mobile.Model.AutorModel
 import com.example.mobile.View.utils.BackButton
 import com.example.mobile.View.utils.ImagePicker
 import com.example.mobile.View.utils.datePicker
 
 @Composable
 fun AdicionarAutor(navController: NavController){
-    var viewModel: AutorViewModel = viewModel()
+    var viewModel = ViewModelFactory().CreateViewModel("Autor") as AutorModel
+    var repository = RepositoryFactory().CreateRepository("Obra")
     val context = LocalContext.current
 
-    // Variaves previnir campos vazios
+    // Variáveis de estado locais para campos editáveis
+    var nome by remember { mutableStateOf("") }
+    var descricao by remember { mutableStateOf("") }
+
+    // Variáveis para prevenir campos vazios
     var nomeError by remember { mutableStateOf(false) }
     var dateError by remember { mutableStateOf(false) }
     var descricaoError by remember { mutableStateOf(false) }
@@ -75,8 +81,10 @@ fun AdicionarAutor(navController: NavController){
 
         // Definir nome
         TextField(
-            value = viewModel.nome,
-            onValueChange = { viewModel.nome = it },
+
+            value = nome,
+            onValueChange = { nome = it },
+
             label = { Text("Nome") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -87,8 +95,10 @@ fun AdicionarAutor(navController: NavController){
 
         //Definir descricao
         TextField(
-            value = viewModel.descricao,
-            onValueChange = { viewModel.descricao = it },
+
+            value = descricao,
+            onValueChange = { descricao = it },
+
             label = { Text("Biografia") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -105,13 +115,19 @@ fun AdicionarAutor(navController: NavController){
         Button(
             onClick = {
                 // Checagem se os campos estao vazios
-                nomeError = viewModel.nome.isEmpty()
+
+                nomeError = nome.isEmpty()
                 dateError = viewModel.date.isEmpty()
-                descricaoError = viewModel.descricao.isEmpty()
+                descricaoError = descricao.isEmpty()
                 imageError = viewModel.image.isEmpty()
 
                 if (!nomeError && !dateError && !descricaoError && !imageError) {
+                    // Atualiza o viewModel com os valores dos campos
+                    viewModel.nome = nome
+                    viewModel.descricao = descricao
                     viewModel.cadastrarAutor(context)
+                    repository
+
                     navController.popBackStack()
                 }
             },

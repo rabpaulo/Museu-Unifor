@@ -32,7 +32,9 @@ import com.example.mobile.R
 import com.example.mobile.Controller.Screen
 import com.example.mobile.View.utils.BackButton
 import com.google.firebase.firestore.FirebaseFirestore
-import com.example.mobile.Models.AutorViewModel
+
+import com.example.mobile.Model.AutorModel
+
 import com.example.mobile.View.utils.base64ToBitmap
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -44,31 +46,37 @@ import com.example.mobile.View.utils.SelectableImage
 
 @Composable
 fun EditarAutor(navController: NavController, id: String) {
-    val viewModel: AutorViewModel = viewModel()
+
+    val viewModel: AutorModel = viewModel()
     val db = FirebaseFirestore.getInstance()
     val context = LocalContext.current
-    var decodedBitmap by remember { mutableStateOf<Bitmap?>(null) } // For storing the decoded image
+    var decodedBitmap by remember { mutableStateOf<Bitmap?>(null) }
+
+    // Estados locais para campos editáveis
+    var nome by remember { mutableStateOf("") }
+    var date by remember { mutableStateOf("") }
+    var descricao by remember { mutableStateOf("") }
 
     LaunchedEffect(db) {
         db.collection("autor")
-        .document(id)
-        .get()
-        .addOnSuccessListener {
-            document ->
-            // Only set the ViewModel values if they are empty to prevent overwriting user input
-           viewModel.nome = document.getString("nome") ?: ""
-           viewModel.date = document.getString("data") ?: ""
-           viewModel.descricao = document.getString("descricao") ?: ""
-           viewModel.image = document.getString("image") ?: ""
+            .document(id)
+            .get()
+            .addOnSuccessListener { document ->
+                // Só preenche os campos locais se estiverem vazios
+                if (nome.isEmpty()) nome = document.getString("nome") ?: ""
+                if (date.isEmpty()) date = document.getString("data") ?: ""
+                if (descricao.isEmpty()) descricao = document.getString("descricao") ?: ""
+                viewModel.image = document.getString("image") ?: ""
 
-            val base64String = viewModel.image
-            if (base64String.isNotEmpty()) {
-                decodedBitmap = base64ToBitmap(base64String)
+                val base64String = viewModel.image
+                if (base64String.isNotEmpty()) {
+                    decodedBitmap = base64ToBitmap(base64String)
+                }
             }
-        }
-        .addOnFailureListener { e ->
-            Log.e("FirestoreError", "Error fetching author data", e)
-        }
+            .addOnFailureListener { e ->
+                Log.e("FirestoreError", "Error fetching author data", e)
+            }
+
     }
 
     Column(
@@ -117,8 +125,10 @@ fun EditarAutor(navController: NavController, id: String) {
         Spacer(Modifier.height(10.dp))
 
         TextField(
-            value = viewModel.nome,
-            onValueChange = { viewModel.nome = it },
+
+            value = nome,
+            onValueChange = { nome = it },
+
             label = { Text(text = "Editar nome") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -126,8 +136,10 @@ fun EditarAutor(navController: NavController, id: String) {
         Spacer(Modifier.height(10.dp))
 
         TextField(
-            value = viewModel.date,
-            onValueChange = { viewModel.date = it },
+
+            value = date,
+            onValueChange = { date = it },
+
             label = { Text(text = "Editar data") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -135,8 +147,10 @@ fun EditarAutor(navController: NavController, id: String) {
         Spacer(Modifier.height(10.dp))
 
         TextField(
-            value = viewModel.descricao,
-            onValueChange = { viewModel.descricao = it },
+
+            value = descricao,
+            onValueChange = { descricao = it },
+
             label = { Text(text = "Editar descrição") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -159,6 +173,12 @@ fun EditarAutor(navController: NavController, id: String) {
 
             Button(
                 onClick = {
+
+                    // Atualiza o viewModel com os valores dos campos antes de salvar
+                    viewModel.nome = nome
+                    viewModel.date = date
+                    viewModel.descricao = descricao
+
                     viewModel.EditarAutor(context, id ?: "")
                     navController.navigate(Screen.AutoresADM.route)
                 },

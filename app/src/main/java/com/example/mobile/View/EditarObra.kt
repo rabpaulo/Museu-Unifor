@@ -32,11 +32,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+
 import androidx.navigation.NavController
 import com.example.mobile.R
-import com.example.mobile.Models.ObraViewModel
+import com.example.mobile.Model.ObraModel
 import com.example.mobile.Controller.Screen
+import com.example.mobile.Factory.ViewModelFactory
+
 import com.example.mobile.View.utils.BackButton
 import com.example.mobile.View.utils.SelectableImage
 import com.example.mobile.View.utils.base64ToBitmap
@@ -44,10 +46,17 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
 fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) {
-    val viewModel: ObraViewModel = viewModel()
+    val viewModel = remember { ViewModelFactory().CreateViewModel("Obra") as ObraModel }
     val db = FirebaseFirestore.getInstance()
     val context = LocalContext.current
-    var decodedBitmap by remember { mutableStateOf<Bitmap?>(null) } // For storing the decoded image
+    var decodedBitmap by remember { mutableStateOf<Bitmap?>(null) }
+
+    // State for editable fields
+    var nome by remember { mutableStateOf("") }
+    var data by remember { mutableStateOf("") }
+    var descricao by remember { mutableStateOf("") }
+    var image by remember { mutableStateOf("") }
+
 
     // Load obra data only once when the Composable is first launched
     LaunchedEffect(db) {
@@ -59,17 +68,15 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
                     .document(obraId)
                     .get()
                     .addOnSuccessListener { document ->
-                        // Set ViewModel values
-                        viewModel.autor = document.getString("autor").orEmpty()
-                        viewModel.nome = document.getString("nome").orEmpty()
-                        viewModel.data = document.getString("data").orEmpty()
-                        viewModel.descricao = document.getString("descricao").orEmpty()
-                        viewModel.image = document.getString("image").orEmpty()
-
+                        // Set state values
+                        nome = document.getString("nome").orEmpty()
+                        data = document.getString("data").orEmpty()
+                        descricao = document.getString("descricao").orEmpty()
+                        image = document.getString("image").orEmpty()
                         // Decode Base64 string into Bitmap
-                        val base64String = viewModel.image
-                        if (base64String.isNotEmpty()) {
-                            decodedBitmap = base64ToBitmap(base64String)
+                        if (image.isNotEmpty()) {
+                            decodedBitmap = base64ToBitmap(image)
+
                         }
                     }
                     .addOnFailureListener { e ->
@@ -120,15 +127,18 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
             labelName = "Mudar foto",
             context = context,
             onImageSelected = { base64String ->
-               viewModel.image = base64String
+                image = base64String
+                decodedBitmap = base64ToBitmap(base64String)
+
             }
         )
 
         Spacer(Modifier.height(10.dp))
 
         TextField(
-            value = viewModel.nome,
-            onValueChange = { viewModel.nome = it },
+            value = nome,
+            onValueChange = { nome = it },
+
             label = { Text(text = "Editar nome") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -136,8 +146,9 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
         Spacer(Modifier.height(10.dp))
 
         TextField(
-            value = viewModel.data,
-            onValueChange = { viewModel.data = it },
+            value = data,
+            onValueChange = { data = it },
+
             label = { Text(text = "Editar data") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -145,8 +156,9 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
         Spacer(Modifier.height(10.dp))
 
         TextField(
-            value = viewModel.descricao,
-            onValueChange = { viewModel.descricao = it },
+            value = descricao,
+            onValueChange = { descricao = it },
+
             label = { Text(text = "Editar descrição") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -158,7 +170,6 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
             Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            // Delete
             Button(
                 onClick = {
                     viewModel.DeletarObra(context, idAutor + "", idObra + "")
@@ -169,9 +180,14 @@ fun EditarObra(navController: NavController, idAutor: String?, idObra: String?) 
                 Text("Deletar Obra")
             }
 
-            // Edit
             Button(
                 onClick = {
+                    // Update ViewModel with current state before saving
+                    viewModel.nome = nome
+                    viewModel.data = data
+                    viewModel.descricao = descricao
+                    viewModel.image = image
+
                     viewModel.EditarObra(context, idAutor + "", idObra + "")
                     navController.navigate(Screen.ObrasADM.route)
                 },

@@ -39,8 +39,6 @@ import com.example.mobile.View.utils.poppinsFamily
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AutoresADM(navController: NavController){
-
-
     Column(Modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.TopCenter)

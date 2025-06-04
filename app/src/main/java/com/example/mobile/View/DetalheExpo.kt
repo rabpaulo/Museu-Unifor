@@ -48,13 +48,6 @@ import com.example.mobile.View.utils.dynamicSpacerHeight
 import com.example.mobile.View.utils.poppinsFamily
 import java.util.Locale
 
-@Preview(showBackground = true)
-@Composable
-fun ScreenPreview(){
-    DetalheExpo(rememberNavController())
-}
-
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetalheExpo(navController: NavController){

@@ -26,9 +26,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+
 import androidx.navigation.NavController
-import com.example.mobile.Models.ObraViewModel
+import com.example.mobile.Factory.RepositoryFactory
+import com.example.mobile.Factory.ViewModelFactory
+import com.example.mobile.Model.ObraModel
+import com.example.mobile.Repository.ObraRepository
+
 import com.example.mobile.View.utils.BackButton
 import com.example.mobile.View.utils.ImagePicker
 import com.example.mobile.View.utils.datePicker
@@ -38,10 +42,18 @@ import com.example.mobile.View.utils.selecionarAutor
 
 @Composable
 fun AdicionarObra(navController: NavController){
-    val viewModel: ObraViewModel = viewModel()
+
+    var viewModel = ViewModelFactory().CreateViewModel("Obra") as ObraModel
+    var repository = RepositoryFactory().CreateRepository("Obra")
+
     val context = LocalContext.current
 
     var autorId by remember { mutableStateOf("") }
+
+
+    // Estados locais para campos editáveis
+    var nome by remember { mutableStateOf("") }
+    var descricao by remember { mutableStateOf("") }
 
     // Variaves previnir campos vazios
     var autorError by remember { mutableStateOf(false) }
@@ -100,8 +112,10 @@ fun AdicionarObra(navController: NavController){
 
         // Definir nome
         TextField(
-            value = viewModel.nome,
-            onValueChange = { viewModel.nome = it},
+
+            value = nome,
+            onValueChange = { nome = it },
+
             label = { Text("Nome") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -111,8 +125,10 @@ fun AdicionarObra(navController: NavController){
 
         // Definir descricao
         TextField(
-            value = viewModel.descricao,
-            onValueChange = { viewModel.descricao = it},
+
+            value = descricao,
+            onValueChange = { descricao = it },
+
             label = { Text("Descrição") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
@@ -122,15 +138,21 @@ fun AdicionarObra(navController: NavController){
 
         Button(
             onClick = {
-            // Checagem se os campos estao vazios
-            autorError = viewModel.autor.isEmpty()
-            nomeError = viewModel.nome.isEmpty()
-            dateError = viewModel.data.isEmpty()
-            descricaoError = viewModel.descricao.isEmpty()
-            imageError = viewModel.image.isEmpty()
+
+                // Checagem se os campos estao vazios
+                autorError = viewModel.autor.isEmpty()
+                nomeError = nome.isEmpty()
+                dateError = viewModel.data.isEmpty()
+                descricaoError = descricao.isEmpty()
+                imageError = viewModel.image.isEmpty()
 
                 if (!autorError && !nomeError && !dateError && !descricaoError && !imageError) {
+                    // Atualiza o viewModel com os valores dos campos
+                    viewModel.nome = nome
+                    viewModel.descricao = descricao
                     viewModel.adicionarObra(context, autorId)
+                    repository
+
                     navController.popBackStack()
                 }
             }
@@ -139,5 +161,3 @@ fun AdicionarObra(navController: NavController){
         }
     }
 }
-
-

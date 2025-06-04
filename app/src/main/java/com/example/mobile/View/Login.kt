@@ -37,6 +37,8 @@ import androidx.navigation.NavController
 import com.example.mobile.Controller.Screen
 import com.example.mobile.View.utils.dynamicSpacerHeight
 import com.example.mobile.View.utils.poppinsFamily
+import com.google.firebase.auth.FirebaseAuth
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -120,23 +122,44 @@ fun checkCredentials(
     navController: NavController,
     onError: (String) -> Unit
 ) {
-    val db = FirebaseFirestore.getInstance()
-
-    db.collection("credenciais")
-        .whereEqualTo("login", login)
-        .whereEqualTo("senha", senha)
-        .get()
-        .addOnSuccessListener {
-            documents ->
-            if (!documents.isEmpty) {
+    val auth = FirebaseAuth.getInstance()
+    auth.signInWithEmailAndPassword(login, senha)
+        .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
                 navController.navigate(Screen.AutoresADM.route)
             } else {
-                onError("Login ou senha inválidos")
+                onError("Erro ao acessar o sistema. Tente novamente.")
             }
         }
         .addOnFailureListener {
-            exception ->
-            onError("Erro ao acessar o sistema. Tente novamente.")
+            onError("Login ou senha inválidos")
         }
 }
+
+//fun checkCredentials(
+//    login: String,
+//    senha: String,
+//    navController: NavController,
+//    onError: (String) -> Unit
+//) {
+//    val db = FirebaseFirestore.getInstance()
+//    FirebaseAuthCredentialsProvider.
+//
+//    db.collection("credenciais")
+//        .whereEqualTo("login", login)
+//        .whereEqualTo("senha", senha)
+//        .get()
+//        .addOnSuccessListener {
+//            documents ->
+//            if (!documents.isEmpty) {
+//                navController.navigate(Screen.AutoresADM.route)
+//            } else {
+//                onError("Login ou senha inválidos")
+//            }
+//        }
+//        .addOnFailureListener {
+//            exception ->
+//            onError("Erro ao acessar o sistema. Tente novamente.")
+//        }
+//}
 
