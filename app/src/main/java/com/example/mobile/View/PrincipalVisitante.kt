@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -25,8 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.R
 import com.example.mobile.Controller.Screen
-import com.example.mobile.View.utils.BackButton
-import com.example.mobile.View.utils.poppinsFamily
+import com.example.mobile.Utils.poppinsFamily
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -40,9 +38,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
-import com.example.mobile.View.utils.dynamicSpacerHeight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -1,4 +1,4 @@
-package com.example.mobile.View.utils
+package com.example.mobile.Utils
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -370,6 +370,3 @@ fun UserMessageCard(message: String) {
         }
     }
 }
-
-
-

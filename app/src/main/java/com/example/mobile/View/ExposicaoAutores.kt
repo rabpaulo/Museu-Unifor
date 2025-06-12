@@ -29,8 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.Controller.Screen
-import com.example.mobile.View.utils.ListaDeAutores
-import com.example.mobile.View.utils.poppinsFamily
+import com.example.mobile.Utils.ListaDeAutores
+import com.example.mobile.Utils.poppinsFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

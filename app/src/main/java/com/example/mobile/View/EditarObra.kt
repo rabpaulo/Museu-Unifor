@@ -39,9 +39,9 @@ import com.example.mobile.Model.ObraModel
 import com.example.mobile.Controller.Screen
 import com.example.mobile.Factory.ViewModelFactory
 
-import com.example.mobile.View.utils.BackButton
-import com.example.mobile.View.utils.SelectableImage
-import com.example.mobile.View.utils.base64ToBitmap
+import com.example.mobile.Utils.BackButton
+import com.example.mobile.Utils.SelectableImage
+import com.example.mobile.Utils.base64ToBitmap
 import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable

@@ -53,12 +53,12 @@ import androidx.navigation.NavController
 import com.example.mobile.R
 import com.example.mobile.Model.GeminiView
 
-import com.example.mobile.View.utils.ChatScreen
-import com.example.mobile.View.utils.ImageCarousel
-import com.example.mobile.View.utils.VLibras
-import com.example.mobile.View.utils.base64ToBitmap
-import com.example.mobile.View.utils.dynamicSpacerHeight
-import com.example.mobile.View.utils.poppinsFamily
+import com.example.mobile.Utils.ChatScreen
+import com.example.mobile.Utils.ImageCarousel
+import com.example.mobile.Utils.VLibras
+import com.example.mobile.Utils.base64ToBitmap
+import com.example.mobile.Utils.dynamicSpacerHeight
+import com.example.mobile.Utils.poppinsFamily
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
