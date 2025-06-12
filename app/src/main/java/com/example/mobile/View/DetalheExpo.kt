@@ -37,15 +37,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.mobile.R
-import com.example.mobile.View.utils.VLibras
-import com.example.mobile.View.utils.dynamicSpacerHeight
-import com.example.mobile.View.utils.poppinsFamily
+import com.example.mobile.Utils.VLibras
+import com.example.mobile.Utils.dynamicSpacerHeight
+import com.example.mobile.Utils.poppinsFamily
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)

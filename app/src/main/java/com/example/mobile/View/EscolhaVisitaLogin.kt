@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.mobile.R
 import com.example.mobile.Controller.Screen
-import com.example.mobile.View.utils.dynamicSpacerHeight
+import com.example.mobile.Utils.dynamicSpacerHeight
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person

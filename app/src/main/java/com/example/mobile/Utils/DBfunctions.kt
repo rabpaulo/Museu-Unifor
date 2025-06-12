@@ -1,4 +1,4 @@
-package com.example.mobile.View.utils
+package com.example.mobile.Utils
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -46,6 +46,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import com.example.mobile.R
@@ -145,7 +146,7 @@ fun ListaDeObras(navController: NavController, mode: String) {
                         }
                     },
                     singleLine = true,
-                    textStyle = androidx.compose.ui.text.TextStyle(color = Color.Black),
+                    textStyle = TextStyle(color = Color.Black),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp),
@@ -234,7 +235,6 @@ fun ListaDeObras(navController: NavController, mode: String) {
     }
 }
 
-
 @Composable
 fun ListaDeAutores(navController: NavController, mode: String) {
     var searchQuery by remember { mutableStateOf("") }
@@ -294,7 +294,7 @@ fun ListaDeAutores(navController: NavController, mode: String) {
                         searchQuery = query
                     },
                     singleLine = true,
-                    textStyle = androidx.compose.ui.text.TextStyle(color = Color.Black),
+                    textStyle = TextStyle(color = Color.Black),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp),

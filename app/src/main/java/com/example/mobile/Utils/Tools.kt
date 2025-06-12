@@ -1,4 +1,4 @@
-package com.example.mobile.View.utils
+package com.example.mobile.Utils
 
 import android.content.Context
 import android.graphics.Bitmap

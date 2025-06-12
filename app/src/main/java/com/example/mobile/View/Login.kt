@@ -1,7 +1,6 @@
 package com.example.mobile.View
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import com.google.firebase.firestore.FirebaseFirestore
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -35,8 +34,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.Controller.Screen
-import com.example.mobile.View.utils.dynamicSpacerHeight
-import com.example.mobile.View.utils.poppinsFamily
+import com.example.mobile.Utils.dynamicSpacerHeight
+import com.example.mobile.Utils.poppinsFamily
 import com.google.firebase.auth.FirebaseAuth
 
 

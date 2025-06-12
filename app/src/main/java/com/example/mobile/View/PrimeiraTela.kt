@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobile.R
 import com.example.mobile.Controller.Screen
-import com.example.mobile.View.utils.dynamicSpacerHeight
-import com.example.mobile.View.utils.poppinsFamily
+import com.example.mobile.Utils.dynamicSpacerHeight
+import com.example.mobile.Utils.poppinsFamily
 
 
 @Composable

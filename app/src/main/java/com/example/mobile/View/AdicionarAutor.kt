@@ -29,9 +29,9 @@ import androidx.navigation.NavController
 import com.example.mobile.Factory.RepositoryFactory
 import com.example.mobile.Factory.ViewModelFactory
 import com.example.mobile.Model.AutorModel
-import com.example.mobile.View.utils.BackButton
-import com.example.mobile.View.utils.ImagePicker
-import com.example.mobile.View.utils.datePicker
+import com.example.mobile.Utils.BackButton
+import com.example.mobile.Utils.ImagePicker
+import com.example.mobile.Utils.datePicker
 
 @Composable
 fun AdicionarAutor(navController: NavController){

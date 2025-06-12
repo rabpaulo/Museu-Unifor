@@ -31,13 +31,12 @@ import androidx.navigation.NavController
 import com.example.mobile.Factory.RepositoryFactory
 import com.example.mobile.Factory.ViewModelFactory
 import com.example.mobile.Model.ObraModel
-import com.example.mobile.Repository.ObraRepository
 
-import com.example.mobile.View.utils.BackButton
-import com.example.mobile.View.utils.ImagePicker
-import com.example.mobile.View.utils.datePicker
-import com.example.mobile.View.utils.getAutorDocumentId
-import com.example.mobile.View.utils.selecionarAutor
+import com.example.mobile.Utils.BackButton
+import com.example.mobile.Utils.ImagePicker
+import com.example.mobile.Utils.datePicker
+import com.example.mobile.Utils.getAutorDocumentId
+import com.example.mobile.Utils.selecionarAutor
 
 
 @Composable

@@ -1,11 +1,6 @@
-package com.example.mobile.View.utils
+package com.example.mobile.Utils
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -13,7 +8,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.mobile.R
-
 
 @Composable
 fun dynamicSpacerHeight(fraction: Float): Dp {
@@ -31,6 +25,5 @@ val poppinsFamily = FontFamily(
     Font(R.font.poppins_extra_bold, FontWeight.ExtraBold),
     Font(R.font.poppins_black, FontWeight.Black),
     Font(R.font.poppins_thin, FontWeight.Thin)
-
 )
 

@@ -30,19 +30,19 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.mobile.R
 import com.example.mobile.Controller.Screen
-import com.example.mobile.View.utils.BackButton
+import com.example.mobile.Utils.BackButton
 import com.google.firebase.firestore.FirebaseFirestore
 
 import com.example.mobile.Model.AutorModel
 
-import com.example.mobile.View.utils.base64ToBitmap
+import com.example.mobile.Utils.base64ToBitmap
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
-import com.example.mobile.View.utils.SelectableImage
+import com.example.mobile.Utils.SelectableImage
 
 @Composable
 fun EditarAutor(navController: NavController, id: String) {
