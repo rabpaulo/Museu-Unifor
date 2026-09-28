@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museu em Sinais | Espaço Cultural Unifor</title>
+    <meta name="description" content="Aplicativo móvel inclusivo para a exposição Centelhas em Movimento, com integração Gemini IA e acessibilidade.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Logo Museu em Sinais">
+                <span>Museu em Sinais</span>
+            </div>
+            <nav class="desktop-nav">
+                <a href="#exposicao">Exposição</a>
+                <a href="#gemini-ia">Guia Gemini</a>
+                <a href="#acessibilidade">Acessibilidade</a>
+                <a href="#galeria">Acervo</a>
+                <a href="#sobre">Projeto</a>
+            </nav>
+            <a href="https://github.com/rabpaulo/Museu-Unifor" target="_blank" class="btn btn-outline">
+                <i class="fab fa-github"></i> Ver no GitHub
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <span class="badge">Espaço Cultural Unifor</span>
+                <h1>A arte ganha voz, sinais e <span class="text-gradient">vida</span>.</h1>
+                <p>O <strong>Museu em Sinais</strong> transforma a visita à exposição "Centelhas em Movimento" em uma experiência imersiva e universal através do aplicativo interativo com Inteligência Artificial generativa, Audiodescrição e VLibras.</p>
+                <div class="hero-actions">
+                    <a href="#gemini-ia" class="btn btn-primary"><i class="fas fa-robot"></i> Experimente a IA</a>
+                    <a href="#galeria" class="btn btn-secondary">Explorar Obras</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="app-mockup">
+                    <img src="assets/splash.jpeg" alt="Tela inicial do aplicativo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exposição Section -->
+    <section class="section about-expo" id="exposicao">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="assets/fotoprinci.jpg" alt="Exposição Centelhas em Movimento" class="rounded-img">
+            </div>
+            <div class="about-text">
+                <h2>Centelhas em Movimento</h2>
+                <h3 class="subtitle">Coleção Igor Queiroz Barroso</h3>
+                <p>Por acreditarmos que obras de arte podem estar em brasa quando reavivadas pelos olhares dos públicos, concebemos a fricção entre elas como ação que desprende centelhas pelos ares.</p>
+                <p>Com curadoria de Paulo Miyada e Tiago Gualberto, a mostra propõe diálogos não-lineares, evidenciando que é o movimento que possibilita novas perspectivas e compreensões sobre a arte moderna e contemporânea brasileira.</p>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Espaço Cultural Unifor, Fortaleza - CE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gemini AI Section (Interactive) -->
+    <section class="section gemini-section" id="gemini-ia">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="badge badge-ai">Google Gemini API</span>
+                <h2>Seu Guia Cultural Pessoal</h2>
+                <p>Experimente abaixo o nosso chat inteligente. O aplicativo utiliza Inteligência Artificial generativa para responder a qualquer dúvida sobre as obras e artistas, como se você estivesse falando com o curador da mostra!</p>
+            </div>
+
+            <div class="chat-simulator">
+                <div class="chat-header">
+                    <i class="fas fa-robot"></i> Guia Cultural (Gemini)
+                </div>
+                <div class="chat-body" id="chat-body">
+                    <div class="message ai-message">
+                        Olá! Sou seu guia cultural da exposição "Centelhas em Movimento". Que obra ou artista você gostaria de conhecer melhor hoje?
+                    </div>
+                </div>
+                <div class="chat-suggestions">
+                    <button class="chip" data-prompt="Quem é Tarsila do Amaral?">Tarsila do Amaral</button>
+                    <button class="chip" data-prompt="Fale sobre a obra Retirantes">Obra Retirantes</button>
+                    <button class="chip" data-prompt="O que é o Movimento Antropofágico?">Antropofagia</button>
+                    <button class="chip" data-prompt="Me explique a obra Abaporu">Abaporu</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acessibilidade Section -->
+    <section class="section accessibility-section" id="acessibilidade">
+        <div class="container">
+            <div class="section-header">
+                <h2>Acessibilidade Universal</h2>
+                <p>A arte deve ser vivenciada por todos. O aplicativo foi construído desde a base pensando na inclusão integral do visitante.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-volume-up"></i></div>
+                    <h3>Audiodescrição Nativa</h3>
+                    <p>Narração em tempo real das obras e conteúdos utilizando o sistema Text-To-Speech (TTS) nativo do Android, proporcionando independência para pessoas com deficiência visual.</p>
+                    <button class="btn btn-outline btn-sm" id="btn-audio-demo"><i class="fas fa-play"></i> Ouvir Demonstração</button>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hands-asl-interpreting"></i></div>
+                    <h3>Tradução em VLibras</h3>
+                    <p>Integração com o avatar 3D do VLibras, traduzindo automaticamente todos os textos curatoriais para a Língua Brasileira de Sinais, promovendo inclusão para a comunidade surda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de Obras -->
+    <section class="section gallery-section" id="galeria">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Destaques do Acervo</h2>
+                <p>Conheça algumas das obras-primas da Coleção Igor Queiroz Barroso presentes no aplicativo.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Portinari -->
+                <div class="gallery-card">
+                    <div class="img-wrapper">
+                        <img src="assets/sample_paint01.jpg" alt="Retirantes">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Retirantes (1944)</h4>
+                        <p class="author">Cândido Portinari</p>
+                    </div>
+                </div>
+                <!-- Tarsila - Abaporu -->
+                <div class="gallery-card">
+                    <div class="img-wrapper">
+                        <img src="assets/sample_paint03.jpg" alt="Abaporu">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Abaporu (1928)</h4>
+                        <p class="author">Tarsila do Amaral</p>
+                    </div>
+                </div>
+                <!-- Di Cavalcanti -->
+                <div class="gallery-card">
+                    <div class="img-wrapper">
+                        <img src="assets/sample_paint05.jpg" alt="Samba">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Samba (1925)</h4>
+                        <p class="author">Emiliano Di Cavalcanti</p>
+                    </div>
+                </div>
+                <!-- Lygia Clark -->
+                <div class="gallery-card">
+                    <div class="img-wrapper">
+                        <img src="assets/sample_paint04.jpg" alt="Bicho - Estrutura">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Bicho - Estrutura (1960)</h4>
+                        <p class="author">Lygia Clark</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologia e Arquitetura -->
+    <section class="section tech-section" id="sobre">
+        <div class="container">
+            <div class="tech-content">
+                <div class="tech-text">
+                    <h2>Desenvolvido com Tecnologia Moderna</h2>
+                    <p>O aplicativo utiliza as melhores práticas e arquitetura recomendadas pelo Google para o ecossistema Android.</p>
+                    <ul class="tech-list">
+                        <li><i class="fab fa-android"></i> <strong>Android Nativo:</strong> 100% Kotlin.</li>
+                        <li><i class="fas fa-layer-group"></i> <strong>Jetpack Compose:</strong> UI declarativa moderna e responsiva.</li>
+                        <li><i class="fas fa-brain"></i> <strong>Google Gemini AI SDK:</strong> Integração direta no app.</li>
+                        <li><i class="fas fa-fire"></i> <strong>Firebase:</strong> Auth & Firestore para o módulo de administração (CRUD).</li>
+                        <li><i class="fas fa-project-diagram"></i> <strong>Clean Architecture:</strong> Padrões MVVM e Repository.</li>
+                    </ul>
+                </div>
+                <div class="tech-admin">
+                    <div class="admin-card">
+                        <i class="fas fa-user-shield admin-icon"></i>
+                        <h4>Módulo Administrativo</h4>
+                        <p>Além da experiência do visitante, o app possui login seguro e dashboard para a gestão dinâmica (CRUD) do acervo e dos artistas no Firestore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="Logo" class="footer-logo">
+                <div>
+                    <h3>Museu em Sinais</h3>
+                    <p>Projeto de extensão acadêmica - Universidade de Fortaleza (UNIFOR)</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/rabpaulo/Museu-Unifor" target="_blank"><i class="fab fa-github"></i> Repositório</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Museu Unifor. Desenvolvido para o Espaço Cultural Unifor.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
